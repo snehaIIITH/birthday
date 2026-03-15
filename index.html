@@ -1,3 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Singla Saab Ka Birthday 🎂</title>
+
+<style>
+
+body{
+margin:0;
+font-family:monospace;
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+text-align:center;
+overflow-x:hidden;
+background:linear-gradient(-45deg,#020024,#090979,#0055ff,#00c6ff);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+h1{
+font-size:60px;
+margin-bottom:30px;
+text-shadow:0 0 15px cyan,0 0 30px blue;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 15px white;}
+to{ text-shadow:0 0 40px cyan;}
+}
+
+#messages{
+font-size:22px;
+width:70%;
+line-height:1.8;
+padding:30px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,255,255,0.5);
+}
+
+#messages p{
+opacity:0;
+animation:fadeIn 1s forwards;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(10px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+.calendar{
+margin-top:35px;
+display:grid;
+grid-template-columns:repeat(7,55px);
+gap:8px;
+}
+
+.day{
+padding:12px;
+background:rgba(255,255,255,0.15);
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,255,255,0.3);
+}
+
+.highlight{
+background:#ff2e63;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.25)}
+100%{transform:scale(1)}
+}
+
+.confetti{
+position:fixed;
+width:10px;
+height:10px;
+top:-10px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+#final{
+font-size:45px;
+margin-top:40px;
+display:none;
+text-shadow:0 0 20px yellow,0 0 40px orange;
+animation:glow 1.5s infinite alternate;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🎂 Happy Birthday Madhav 🎂</h1>
+
+<div id="messages"></div>
+
+<div class="calendar" id="calendar"></div>
+
+<div id="final">🎉🎉 HAPPY BIRTHDAY MADHAV 🎉🎉</div>
+
+<script>
+
 const messages = [
 
 "📅 16 March",
@@ -16,11 +140,11 @@ const messages = [
 
 "🎉 Par chalo aaj birthday hai to ek din ke liye maan leti hu hojao khush 😄",
 
-"💪 yeh to kehna pdega Toda weight chaiye kam hai... par bande mei dam hai 😆",
+"💪 yeh to kehna pdega weight chaiye kam hai... par bande mei dam hai 😆",
 
 "😂 Lite bolna itna sikha diya hai ki shyd marne se phle bhi bol do — koi na lite.",
 
-"❤️ And thanks for being my friend.",
+"❤️ And chalo todi tarif thanks for being my friend.",
 
 "😤 and also Mera gussa, frustration aur mood swings sehne ke liye.(kahi baar kuch bol du to naraz mat hoya karo yaar)",
 
@@ -38,7 +162,7 @@ const messages = [
 
 "😂 ammm... abhi tak vishwas nahi ho rha hoga na yeh maine likha hai",
 
-"😄 abhi tak to face pe achi badi wali smile aayi hogi chalo yahi chaiye",
+"😄 abhi tak to face pe achi badi wali smile aayi hogi chalo, yahi chaiye",
 
 "🎈 Jyada tarif hogayi aaj... chalo chaiye udd lo.",
 
@@ -53,3 +177,69 @@ const messages = [
 "🎂 Happy Birthday once again Madhav 🎉 and may god give you sehanshakti agr tumhare doston se maar padi toh 😂"
 
 ]
+
+let i = 0
+
+function showMessage(){
+
+if(i < messages.length){
+
+let p = document.createElement("p")
+p.innerText = messages[i]
+
+document.getElementById("messages").appendChild(p)
+
+i++
+
+setTimeout(showMessage,2500)
+
+}else{
+
+startConfetti()
+
+document.getElementById("final").style.display="block"
+
+}
+
+}
+
+showMessage()
+
+
+let calendar=document.getElementById("calendar")
+
+for(let d=1; d<=31; d++){
+
+let box=document.createElement("div")
+box.className="day"
+box.innerText=d
+
+if(d==16){
+box.classList.add("highlight")
+}
+
+calendar.appendChild(box)
+
+}
+
+function startConfetti(){
+
+for(let i=0;i<150;i++){
+
+let conf=document.createElement("div")
+conf.className="confetti"
+
+conf.style.left=Math.random()*100+"vw"
+conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
+conf.style.animationDuration=(Math.random()*3+2)+"s"
+
+document.body.appendChild(conf)
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
