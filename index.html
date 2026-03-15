@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>System Booting...</title>
+<title>Birthday Protocol</title>
 
 <style>
 
@@ -15,14 +13,14 @@ font-family:monospace;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
 flex-direction:column;
+height:100vh;
 text-align:center;
-overflow:hidden;
 }
 
 h1{
-font-size:60px;
+font-size:55px;
+margin-bottom:20px;
 animation: glow 2s infinite alternate;
 }
 
@@ -31,23 +29,35 @@ from{ text-shadow:0 0 10px white;}
 to{ text-shadow:0 0 30px cyan;}
 }
 
-#terminal{
-font-size:20px;
-margin-top:20px;
-width:80%;
+#messages{
+font-size:22px;
+width:70%;
+line-height:1.6;
 }
 
-.confetti{
-position:absolute;
-width:10px;
-height:10px;
+.calendar{
+margin-top:30px;
+display:grid;
+grid-template-columns:repeat(7,50px);
+gap:5px;
+justify-content:center;
+}
+
+.day{
+padding:10px;
+background:#0a3d91;
+border-radius:6px;
+}
+
+.highlight{
 background:red;
-animation: fall 5s linear infinite;
+animation:pulse 1s infinite;
 }
 
-@keyframes fall{
-0%{transform:translateY(-100px);}
-100%{transform:translateY(100vh);}
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
 }
 
 </style>
@@ -55,47 +65,96 @@ animation: fall 5s linear infinite;
 
 <body>
 
-<h1>🎂 HAPPY BIRTHDAY 🎂</h1>
+<h1>🎂 Happy Birthday Madhav 🎂</h1>
 
-<div id="terminal"></div>
+<div id="messages"></div>
+
+<div class="calendar" id="calendar"></div>
 
 <script>
 
-let messages=[
-"Booting Birthday Protocol...",
-"Loading Friendship.dll ...",
-"Initializing Cake Engine...",
-"Age++ detected...",
-"Launching Celebration Mode...",
-"",
-"🎉 ACCESS GRANTED 🎉",
-"",
-"Happy Birthday Best Friend ❤️"
+const messages = [
+
+"📅 16 March detected... Birthday protocol activated.",
+
+"We met through Electronic Workshop in October.",
+
+"And now it's just been 6 months...",
+
+"But now it feels like my day is not completed without talking to you.",
+
+"Chaiye kitna bhi mazak uda lu, kitna bhi kuch keh du...",
+
+"Par dost to mere sabse ache wale tum hi ho.",
+
+"Mujhe pata hai tum bhoole nahi ho,",
+
+"Par chalo aaj birthday hai to ek din ke liye maan leti hu 😄",
+
+"Toda weight chaiye kam hai... par bande mei dam hai.",
+
+"Lite bolna itna sikha diya hai ki shyd marne se phle bhi bol do — koi na lite.",
+
+"Aaj ka din tumhara maze ka hai.",
+
+"(Vaise maze to tumhare roz hi hote hai 😂)",
+
+"Enjoy your day to the fullest!",
+
+"And thanks for being my friend.",
+
+"Mera gussa, frustration, mood swings sehne ke liye.",
+
+"Aur mujhe kharab mood mei khush karne ke liye.",
+
+"Jyada tarif hogayi aaj... chaiye udd lo.",
+
+"Par please 1 din mei neeche aa jana 😌",
+
+"Happy Birthday once again Madhav 🎉"
+
 ]
 
-let i=0
+let i = 0
 
-function type(){
+function showMessage(){
+
 if(i < messages.length){
-document.getElementById("terminal").innerHTML += messages[i] + "<br>"
+
+let p = document.createElement("p")
+p.innerText = messages[i]
+
+document.getElementById("messages").appendChild(p)
+
 i++
-setTimeout(type,700)
-}
-}
 
-type()
+setTimeout(showMessage, 2500)
 
-function confetti(){
-let c=document.createElement("div")
-c.className="confetti"
-c.style.left=Math.random()*window.innerWidth+"px"
-c.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
-document.body.appendChild(c)
-
-setTimeout(()=>{c.remove()},5000)
 }
 
-setInterval(confetti,200)
+}
+
+showMessage()
+
+
+
+// Calendar generation
+
+let calendar = document.getElementById("calendar")
+
+for(let d=1; d<=31; d++){
+
+let box = document.createElement("div")
+box.className="day"
+box.innerText=d
+
+if(d==16){
+box.classList.add("highlight")
+}
+
+calendar.appendChild(box)
+
+}
 
 </script>
 
