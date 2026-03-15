@@ -1,128 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Singla Saab Ka Birthday 🎂</title>
-
-<style>
-
-body{
-margin:0;
-font-family:monospace;
-color:white;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-min-height:100vh;
-text-align:center;
-overflow-x:hidden;
-background:linear-gradient(-45deg,#020024,#090979,#0055ff,#00c6ff);
-background-size:400% 400%;
-animation:bgMove 12s ease infinite;
-}
-
-@keyframes bgMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
-h1{
-font-size:60px;
-margin-bottom:30px;
-text-shadow:0 0 15px cyan,0 0 30px blue;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{ text-shadow:0 0 15px white;}
-to{ text-shadow:0 0 40px cyan;}
-}
-
-#messages{
-font-size:22px;
-width:70%;
-line-height:1.8;
-padding:30px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
-border-radius:20px;
-box-shadow:0 0 25px rgba(0,255,255,0.5);
-}
-
-#messages p{
-opacity:0;
-animation:fadeIn 1s forwards;
-}
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(10px)}
-to{opacity:1; transform:translateY(0)}
-}
-
-.calendar{
-margin-top:35px;
-display:grid;
-grid-template-columns:repeat(7,55px);
-gap:8px;
-}
-
-.day{
-padding:12px;
-background:rgba(255,255,255,0.15);
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,255,255,0.3);
-}
-
-.highlight{
-background:#ff2e63;
-animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.25)}
-100%{transform:scale(1)}
-}
-
-.confetti{
-position:fixed;
-width:10px;
-height:10px;
-top:-10px;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-to{
-transform:translateY(110vh) rotate(360deg);
-}
-}
-
-#final{
-font-size:45px;
-margin-top:40px;
-display:none;
-text-shadow:0 0 20px yellow,0 0 40px orange;
-animation:glow 1.5s infinite alternate;
-}
-
-</style>
-</head>
-
-<body>
-
-<h1>🎂 Happy Birthday Madhav 🎂</h1>
-
-<div id="messages"></div>
-
-<div class="calendar" id="calendar"></div>
-
-<div id="final">🎉🎉 HAPPY BIRTHDAY MADHAV 🎉🎉</div>
-
 <script>
 
 const messages = [
+
 "📅 16 March",
 "⚡ We met through Electronic Workshop in October 🔧",
 "⏳ And now it's just been 6 months...",
@@ -132,7 +11,12 @@ const messages = [
 "🙂 Mujhe pata hai tum bhoole nahi ho...",
 "🎉 Par chalo aaj birthday hai to ek din ke liye maan leti hu hojao khush 😄",
 "💪 yeh to kehna pdega weight chaiye kam hai... par bande mei dam hai 😆",
-"😂 Lite bolna itna sikha diya hai ki shyd marne se phle bhi bol do — koi na lite.",
+"😂 Lite bolna itna sikha diya hai ki shyd marne se phle bhi bol do — koi na lite."
+
+];
+
+const remainingMessages = [
+
 "❤️ And chalo todi tarif thanks for being my friend.",
 "😤 and also Mera gussa, frustration aur mood swings sehne ke liye.(kahi baar kuch bol du to naraz mat hoya karo yaar)",
 "🙏 Mujhe itna kuch sikhane ke liye chaiye mujhse chote ho par phir bhi itna kuch sikhna pdta hai tumse ab Singla saab hai he itne mahaan",
@@ -151,6 +35,7 @@ const messages = [
 "🎂 Happy Birthday once again Madhav 🎉 and may god give you sehanshakti agr tumhare doston se maar padi toh 😂 ",
 "Gift mei kya chaiye pls bata dena actually tumhare jaise baat hai maine kabhi ladko ko gift nahi diya",
 "Aur ab tumhare jitne complex bots banane nahi aate so don't judge 😔 to socha normal se toda alg ,par koina seekh jayege "
+
 ];
 
 let i = 0;
@@ -160,13 +45,80 @@ function showMessage(){
 if(i < messages.length){
 
 let p = document.createElement("p");
-p.innerText = messages[i];
+p.textContent = messages[i];
 
 document.getElementById("messages").appendChild(p);
 
 i++;
 
 setTimeout(showMessage,2500);
+
+}else{
+
+showChoice();
+
+}
+
+}
+
+function showChoice(){
+
+let container=document.getElementById("messages");
+
+let question=document.createElement("p");
+question.textContent="❓ Tarif sun na chahoge?";
+container.appendChild(question);
+
+let btn1=document.createElement("button");
+btn1.textContent="Mai kyu mana karunga";
+
+let btn2=document.createElement("button");
+btn2.textContent="Nahi mat karo";
+
+btn1.style.margin="10px";
+btn2.style.margin="10px";
+
+container.appendChild(btn1);
+container.appendChild(btn2);
+
+btn1.onclick=function(){
+
+btn1.remove();
+btn2.remove();
+
+showRemaining();
+
+}
+
+btn2.onclick=function(){
+
+btn1.remove();
+btn2.remove();
+
+let reply=document.createElement("p");
+reply.textContent="😌 Nahi aaj to karongii";
+container.appendChild(reply);
+
+setTimeout(showRemaining,2000);
+
+}
+
+}
+
+let j=0;
+
+function showRemaining(){
+
+if(j < remainingMessages.length){
+
+let p=document.createElement("p");
+p.textContent=remainingMessages[j];
+
+document.getElementById("messages").appendChild(p);
+
+j++;
+
+setTimeout(showRemaining,2500);
 
 }else{
 
@@ -179,41 +131,4 @@ document.getElementById("final").style.display="block";
 
 showMessage();
 
-
-let calendar=document.getElementById("calendar");
-
-for(let d=1; d<=31; d++){
-
-let box=document.createElement("div");
-box.className="day";
-box.innerText=d;
-
-if(d==16){
-box.classList.add("highlight");
-}
-
-calendar.appendChild(box);
-
-}
-
-function startConfetti(){
-
-for(let i=0;i<150;i++){
-
-let conf=document.createElement("div");
-conf.className="confetti";
-
-conf.style.left=Math.random()*100+"vw";
-conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)";
-conf.style.animationDuration=(Math.random()*3+2)+"s";
-
-document.body.appendChild(conf);
-
-}
-
-}
-
 </script>
-
-</body>
-</html>
