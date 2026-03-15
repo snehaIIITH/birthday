@@ -1,102 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Birthday Protocol 🎂</title>
-
-<style>
-
-body{
-margin:0;
-background:#001f5c;
-color:white;
-font-family:monospace;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-min-height:100vh;
-text-align:center;
-overflow-x:hidden;
-}
-
-h1{
-font-size:55px;
-margin-bottom:20px;
-animation: glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{ text-shadow:0 0 10px white;}
-to{ text-shadow:0 0 30px cyan;}
-}
-
-#messages{
-font-size:22px;
-width:70%;
-line-height:1.6;
-}
-
-.calendar{
-margin-top:30px;
-display:grid;
-grid-template-columns:repeat(7,50px);
-gap:5px;
-justify-content:center;
-}
-
-.day{
-padding:10px;
-background:#0a3d91;
-border-radius:6px;
-}
-
-.highlight{
-background:red;
-animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.2)}
-100%{transform:scale(1)}
-}
-
-.confetti{
-position:fixed;
-width:10px;
-height:10px;
-top:-10px;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-to{
-transform:translateY(110vh) rotate(360deg);
-}
-}
-
-#final{
-font-size:40px;
-margin-top:40px;
-display:none;
-animation: glow 1.5s infinite alternate;
-}
-
-</style>
-</head>
-
-<body>
-
-<h1>🎂 Happy Birthday Madhav 🎂</h1>
-
-<div id="messages"></div>
-
-<div class="calendar" id="calendar"></div>
-
-<div id="final">🎉🎉 HAPPY BIRTHDAY MADHAV 🎉🎉</div>
-
-<script>
-
 const messages = [
 
 "📅 16 March",
@@ -105,7 +6,7 @@ const messages = [
 
 "⏳ And now it's just been 6 months...",
 
-"💬 par tumse baat kare bina mera din nahi poora hota  😊",
+"💬 par tumse baat kare bina mera din nahi poora hota 😊",
 
 "😜 Chaiye kitna bhi mazak uda lu, kitna bhi kuch keh du...",
 
@@ -113,117 +14,42 @@ const messages = [
 
 "🙂 Mujhe pata hai tum bhoole nahi ho...",
 
-"🎉 Par chalo aaj birthday hai to ek din ke liye maan leti hu hojao khush😄",
-  
+"🎉 Par chalo aaj birthday hai to ek din ke liye maan leti hu hojao khush 😄",
 
 "💪 yeh to kehna pdega Toda weight chaiye kam hai... par bande mei dam hai 😆",
 
 "😂 Lite bolna itna sikha diya hai ki shyd marne se phle bhi bol do — koi na lite.",
 
-
 "❤️ And thanks for being my friend.",
 
 "😤 and also Mera gussa, frustration aur mood swings sehne ke liye.(kahi baar kuch bol du to naraz mat hoya karo yaar)",
 
-" thanks Mujhe itna kuch sikhane ke liye chaiye mujhse chote ho par phir bhi itna kuch sikhna pdta hai tumse ab singla saab hai he itne mahaan"
+"🙏 Mujhe itna kuch sikhane ke liye chaiye mujhse chote ho par phir bhi itna kuch sikhna pdta hai tumse ab Singla saab hai he itne mahaan",
 
-"sorry us din chutiya bolne ke liye phir se,"
-  
-"mujhe aaj bhi bura lgta hai ki maine kyu bola"
-  
-"par chalo buri baatein yad nahi krte"
+"😅 Sorry us din chutiya bolne ke liye phir se",
 
-"aur hmm sudhar rahi hun hai dekho ab toh naraz bhi nahi hoti choti baaton pe"
+"😔 mujhe aaj bhi bura lgta hai ki maine kyu bola",
 
-"😊 Aur thanks  mujhe kharab mood mei khush karne ke liye itni baar.",
+"🙂 par chalo buri baatein yaad nahi krte",
 
-"😂 ammm... abhi tak vishwas nahi ho rha hoga na yeh maine likha hai"
-  
-"abhi tak to face pe achi badi wali smile aayi hogi chalo yahi chaiye"
+"✨ aur hmm sudhar rahi hun hai dekho ab toh naraz bhi nahi hoti choti baaton pe",
 
-"Jyada tarif hogayi aaj... chalo chaiye udd lo.",
+"😊 Aur thanks mujhe kharab mood mei khush karne ke liye itni baar.",
+
+"😂 ammm... abhi tak vishwas nahi ho rha hoga na yeh maine likha hai",
+
+"😄 abhi tak to face pe achi badi wali smile aayi hogi chalo yahi chaiye",
+
+"🎈 Jyada tarif hogayi aaj... chalo chaiye udd lo.",
 
 "😌 Par please 1 din mei neeche aa jana.",
-  "🥳 Aaj ka din tumhara maze ka hai!",
+
+"🥳 Aaj ka din tumhara maze ka hai!",
 
 "(😏 Vaise maze to tumhare roz hi hote hai.)",
 
-"🎊 Enjoy your day to the fullest!(mujhe kehne ki jarurat nahi)",
+"🎊 Enjoy your day to the fullest! (mujhe kehne ki jarurat nahi)",
 
 "🎂 Happy Birthday once again Madhav 🎉 and may god give you sehanshakti agr tumhare doston se maar padi toh 😂"
 
 ]
-
-let i = 0
-
-function showMessage(){
-
-if(i < messages.length){
-
-let p = document.createElement("p")
-p.innerText = messages[i]
-
-document.getElementById("messages").appendChild(p)
-
-i++
-
-setTimeout(showMessage, 2500)
-
-}else{
-
-startConfetti()
-
-document.getElementById("final").style.display="block"
-
-}
-
-}
-
-showMessage()
-
-
-// Calendar
-
-let calendar = document.getElementById("calendar")
-
-for(let d=1; d<=31; d++){
-
-let box = document.createElement("div")
-box.className="day"
-box.innerText=d
-
-if(d==16){
-box.classList.add("highlight")
-}
-
-calendar.appendChild(box)
-
-}
-
-
-// Confetti
-
-function startConfetti(){
-
-for(let i=0;i<120;i++){
-
-let conf=document.createElement("div")
-
-conf.className="confetti"
-
-conf.style.left=Math.random()*100+"vw"
-
-conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
-
-conf.style.animationDuration=(Math.random()*3+2)+"s"
-
-document.body.appendChild(conf)
-
-}
-
-}
-
-</script>
-
-</body>
-</html>
