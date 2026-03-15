@@ -144,81 +144,76 @@ const messages = [
 
 "😂 Lite bolna itna sikha diya hai ki shyd marne se phle bhi bol do — koi na lite.",
 
-"❤️ And chalo todi tarif thanks for being my friend.",
+"❤️ Chalo thodi tarif... thanks for being my friend.",
 
-"😤 and also Mera gussa, frustration aur mood swings sehne ke liye.(kahi baar kuch bol du to naraz mat hoya karo yaar)",
+"😤 Mera gussa, frustration aur mood swings sehne ke liye.",
 
-"🙏 Mujhe itna kuch sikhane ke liye chaiye mujhse chote ho par phir bhi itna kuch sikhna pdta hai tumse ab Singla saab hai he itne mahaan",
+"🙏 Mujhe itna kuch sikhane ke liye.",
 
 "😅 Sorry us din chutiya bolne ke liye phir se",
 
-"😔 mujhe aaj bhi bura lgta hai ki maine kyu bola",
+"🙂 Par chalo buri baatein yaad nahi krte",
 
-"🙂 par chalo buri baatein yaad nahi krte",
+"✨ Aur hmm sudhar rahi hun",
 
-"✨ aur hmm sudhar rahi hun hai dekho ab toh naraz bhi nahi hoti choti baaton pe",
+"😊 Aur thanks mujhe kharab mood mei khush karne ke liye",
 
-"😊 Aur thanks mujhe kharab mood mei khush karne ke liye itni baar.",
+"😂 Abhi tak vishwas nahi ho rha hoga na yeh maine likha hai",
 
-"😂 ammm... abhi tak vishwas nahi ho rha hoga na yeh maine likha hai",
+"😄 Abhi tak to face pe achi badi wali smile aayi hogi",
 
-"😄 abhi tak to face pe achi badi wali smile aayi hogi chalo, yahi chaiye",
+"🎈 Jyada tarif hogayi aaj... chalo chaiye udd lo",
 
-"🎈 Jyada tarif hogayi aaj... chalo chaiye udd lo.",
-
-"😌 Par please 1 din mei neeche aa jana.",
+"😌 Par please 1 din mei neeche aa jana",
 
 "🥳 Aaj ka din tumhara maze ka hai!",
 
-"(😏 Vaise maze to tumhare roz hi hote hai.)",
+"🎊 Enjoy your day to the fullest!",
 
-"🎊 Enjoy your day to the fullest! (mujhe kehne ki jarurat nahi)",
+"🎂 Happy Birthday once again Madhav 🎉"
 
-"🎂 Happy Birthday once again Madhav 🎉 and may god give you sehanshakti agr tumhare doston se maar padi toh 😂"
+];
 
-]
-
-let i = 0
+let i = 0;
 
 function showMessage(){
 
 if(i < messages.length){
 
-let p = document.createElement("p")
-p.innerText = messages[i]
+let p = document.createElement("p");
+p.innerText = messages[i];
 
-document.getElementById("messages").appendChild(p)
+document.getElementById("messages").appendChild(p);
 
-i++
+i++;
 
-setTimeout(showMessage,2500)
+setTimeout(showMessage,2500);
 
 }else{
 
-startConfetti()
-
-document.getElementById("final").style.display="block"
-
-}
+startConfetti();
+document.getElementById("final").style.display="block";
 
 }
 
-showMessage()
+}
+
+showMessage();
 
 
-let calendar=document.getElementById("calendar")
+let calendar=document.getElementById("calendar");
 
 for(let d=1; d<=31; d++){
 
-let box=document.createElement("div")
-box.className="day"
-box.innerText=d
+let box=document.createElement("div");
+box.className="day";
+box.innerText=d;
 
 if(d==16){
-box.classList.add("highlight")
+box.classList.add("highlight");
 }
 
-calendar.appendChild(box)
+calendar.appendChild(box);
 
 }
 
@@ -226,14 +221,14 @@ function startConfetti(){
 
 for(let i=0;i<150;i++){
 
-let conf=document.createElement("div")
-conf.className="confetti"
+let conf=document.createElement("div");
+conf.className="confetti";
 
-conf.style.left=Math.random()*100+"vw"
-conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
-conf.style.animationDuration=(Math.random()*3+2)+"s"
+conf.style.left=Math.random()*100+"vw";
+conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)";
+conf.style.animationDuration=(Math.random()*3+2)+"s";
 
-document.body.appendChild(conf)
+document.body.appendChild(conf);
 
 }
 
