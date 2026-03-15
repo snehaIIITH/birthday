@@ -1,1 +1,103 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>System Booting...</title>
+
+<style>
+
+body{
+margin:0;
+background:#001f5c;
+color:white;
+font-family:monospace;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+text-align:center;
+overflow:hidden;
+}
+
+h1{
+font-size:60px;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px white;}
+to{ text-shadow:0 0 30px cyan;}
+}
+
+#terminal{
+font-size:20px;
+margin-top:20px;
+width:80%;
+}
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+background:red;
+animation: fall 5s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(100vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🎂 HAPPY BIRTHDAY 🎂</h1>
+
+<div id="terminal"></div>
+
+<script>
+
+let messages=[
+"Booting Birthday Protocol...",
+"Loading Friendship.dll ...",
+"Initializing Cake Engine...",
+"Age++ detected...",
+"Launching Celebration Mode...",
+"",
+"🎉 ACCESS GRANTED 🎉",
+"",
+"Happy Birthday Best Friend ❤️"
+]
+
+let i=0
+
+function type(){
+if(i < messages.length){
+document.getElementById("terminal").innerHTML += messages[i] + "<br>"
+i++
+setTimeout(type,700)
+}
+}
+
+type()
+
+function confetti(){
+let c=document.createElement("div")
+c.className="confetti"
+c.style.left=Math.random()*window.innerWidth+"px"
+c.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
+document.body.appendChild(c)
+
+setTimeout(()=>{c.remove()},5000)
+}
+
+setInterval(confetti,200)
+
+</script>
+
+</body>
+</html>
