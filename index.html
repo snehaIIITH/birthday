@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Birthday Protocol</title>
+<title>Birthday Protocol 🎂</title>
 
 <style>
 
@@ -14,8 +14,9 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-height:100vh;
+min-height:100vh;
 text-align:center;
+overflow-x:hidden;
 }
 
 h1{
@@ -60,6 +61,27 @@ animation:pulse 1s infinite;
 100%{transform:scale(1)}
 }
 
+.confetti{
+position:fixed;
+width:10px;
+height:10px;
+top:-10px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+#final{
+font-size:40px;
+margin-top:40px;
+display:none;
+animation: glow 1.5s infinite alternate;
+}
+
 </style>
 </head>
 
@@ -71,47 +93,64 @@ animation:pulse 1s infinite;
 
 <div class="calendar" id="calendar"></div>
 
+<div id="final">🎉🎉 HAPPY BIRTHDAY MADHAV 🎉🎉</div>
+
 <script>
 
 const messages = [
 
-"📅 16 March detected... Birthday protocol activated.",
+"📅 16 March",
 
-"We met through Electronic Workshop in October.",
+"⚡ We met through Electronic Workshop in October 🔧",
 
-"And now it's just been 6 months...",
+"⏳ And now it's just been 6 months...",
 
-"But now it feels like my day is not completed without talking to you.",
+"💬 par tumse baat kare bina mera din nahi poora hota  😊",
 
-"Chaiye kitna bhi mazak uda lu, kitna bhi kuch keh du...",
+"😜 Chaiye kitna bhi mazak uda lu, kitna bhi kuch keh du...",
 
-"Par dost to mere sabse ache wale tum hi ho.",
+"🤝 Par dost to mere sabse ache wale tum hi ho aur rahoge",
 
-"Mujhe pata hai tum bhoole nahi ho,",
+"🙂 Mujhe pata hai tum bhoole nahi ho...",
 
-"Par chalo aaj birthday hai to ek din ke liye maan leti hu 😄",
+"🎉 Par chalo aaj birthday hai to ek din ke liye maan leti hu hojao khush😄",
+  
 
-"Toda weight chaiye kam hai... par bande mei dam hai.",
+"💪 yeh to kehna pdega Toda weight chaiye kam hai... par bande mei dam hai 😆",
 
-"Lite bolna itna sikha diya hai ki shyd marne se phle bhi bol do — koi na lite.",
+"😂 Lite bolna itna sikha diya hai ki shyd marne se phle bhi bol do — koi na lite.",
 
-"Aaj ka din tumhara maze ka hai.",
 
-"(Vaise maze to tumhare roz hi hote hai 😂)",
+"❤️ And thanks for being my friend.",
 
-"Enjoy your day to the fullest!",
+"😤 and also Mera gussa, frustration aur mood swings sehne ke liye.(kahi baar kuch bol du to naraz mat hoya karo yaar)",
 
-"And thanks for being my friend.",
+" thanks Mujhe itna kuch sikhane ke liye chaiye mujhse chote ho par phir bhi itna kuch sikhna pdta hai tumse ab singla saab hai he itne mahaan"
 
-"Mera gussa, frustration, mood swings sehne ke liye.",
+"sorry us din chutiya bolne ke liye phir se,"
+  
+"mujhe aaj bhi bura lgta hai ki maine kyu bola"
+  
+"par chalo buri baatein yad nahi krte"
 
-"Aur mujhe kharab mood mei khush karne ke liye.",
+"aur hmm sudhar rahi hun hai dekho ab toh naraz bhi nahi hoti choti baaton pe"
 
-"Jyada tarif hogayi aaj... chaiye udd lo.",
+"😊 Aur thanks  mujhe kharab mood mei khush karne ke liye itni baar.",
 
-"Par please 1 din mei neeche aa jana 😌",
+"😂 ammm... abhi tak vishwas nahi ho rha hoga na yeh maine likha hai"
+  
+"abhi tak to face pe achi badi wali smile aayi hogi chalo yahi chaiye"
 
-"Happy Birthday once again Madhav 🎉"
+"Jyada tarif hogayi aaj... chalo chaiye udd lo.",
+
+"😌 Par please 1 din mei neeche aa jana.",
+  "🥳 Aaj ka din tumhara maze ka hai!",
+
+"(😏 Vaise maze to tumhare roz hi hote hai.)",
+
+"🎊 Enjoy your day to the fullest!(mujhe kehne ki jarurat nahi)",
+
+"🎂 Happy Birthday once again Madhav 🎉 and may god give you sehanshakti agr tumhare doston se maar padi toh 😂"
 
 ]
 
@@ -130,6 +169,12 @@ i++
 
 setTimeout(showMessage, 2500)
 
+}else{
+
+startConfetti()
+
+document.getElementById("final").style.display="block"
+
 }
 
 }
@@ -137,8 +182,7 @@ setTimeout(showMessage, 2500)
 showMessage()
 
 
-
-// Calendar generation
+// Calendar
 
 let calendar = document.getElementById("calendar")
 
@@ -153,6 +197,29 @@ box.classList.add("highlight")
 }
 
 calendar.appendChild(box)
+
+}
+
+
+// Confetti
+
+function startConfetti(){
+
+for(let i=0;i<120;i++){
+
+let conf=document.createElement("div")
+
+conf.className="confetti"
+
+conf.style.left=Math.random()*100+"vw"
+
+conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
+
+conf.style.animationDuration=(Math.random()*3+2)+"s"
+
+document.body.appendChild(conf)
+
+}
 
 }
 
